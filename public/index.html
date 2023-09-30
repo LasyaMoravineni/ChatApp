@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatapp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- <div class="container"> -->
+        <h1 class="appname"> ChitChat💭</h1>
+        <div class="userName">
+            <label >Name: <input type="text" id="name-input" maxlength="20" value="" ></label>
+            <button id="join-btn">Join</button>
+        </div>
+        <div class="instructions" id="instructions">
+            
+            <ul>
+                <li>Welcome to ChitChat.</li>
+                <li>Enter your name and join the chat. Your friends can join the chat from their browser.</li>
+                <li>You will get a message when some other person joins or leaves the chat.</li>
+                <li>To exit chat, click on Exit. To rejoin, refresh the page, enter the name and join.</li>
+                <li>Number of members present in the chat is shown below.</li>
+            </ul>
+        </div>
+        <div class="chat-screen" id="chat-screen">
+            <div class="header">
+                <div class="logo">Chatroom</div>
+                <button id="exit-chat-btn">Exit</button>
+
+            </div>
+            <div class="messages">
+                <!--dummy messages-->
+                <!-- <div class="message my-msg">
+                    <div>
+                        <div class="name">You</div>
+                        <div class="text">hgehbvevjb   verbb jrvuegir</div>
+                    </div>
+                </div>
+               
+                <div class="status" id="status">ABC joined the conversation</div>
+                <div class="message other-msg">
+                    <div>
+                        <div class="name">ABC</div>
+                        <div class="text">Hi</div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="msg-box">
+                <input type="text" id="msg-input" placeholder="Type your message">
+                <button id="send-msg-btn" type="submit">
+                    Send
+                </button>
+            </div>
+
+            
+        </div>
+        <h3 class="number" id="client-total">Number of members: 1</h3>
+
+        
+    <!-- </div> -->
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
