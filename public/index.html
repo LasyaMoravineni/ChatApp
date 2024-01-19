@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatapp</title>
     <link rel="stylesheet" href="styles.css">
+    
+
 </head>
 <body>
     
@@ -48,19 +50,22 @@
                 </div> -->
             </div>
             <div class="msg-box">
+                
                 <input type="text" id="msg-input" placeholder="Type your message">
+                <button id="emoji-btn">😊</button>
                 <button id="send-msg-btn" type="submit">
                     Send
                 </button>
             </div>
-
+            
+            <emoji-picker id="emojiPicker" style="display: none;"></emoji-picker>
             
         </div>
         <h3 class="number" id="client-total">Number of members: 1</h3>
 
         
     <!-- </div> -->
-
+    <script type="module" src="/node_modules/emoji-picker-element/picker.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
 </body>
