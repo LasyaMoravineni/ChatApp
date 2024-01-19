@@ -1,3 +1,4 @@
+
 const socket=io()
 
 const clientsTotal= document.getElementById('client-total')
@@ -11,6 +12,8 @@ const messageForm=document.querySelector(".msg-box")
 const messageInput=document.getElementById("msg-input")
 const exitButton=document.getElementById("exit-chat-btn")
 const instructionsList=document.getElementById("instructions")
+const messageHistory= [];
+
 
 joinBtn.addEventListener('click',()=>{
 
@@ -24,6 +27,11 @@ joinBtn.addEventListener('click',()=>{
     chatScreen.style.display="block"
     clientsTotal.style.display="block"
 
+    if(messageHistory.length > 0 ){
+        messageHistory.forEach((historItem) =>{
+            addMessage(historItem.isOwnmsg, historItem.data);
+        })
+    }
     socket.emit('join-msg',{
         joinMsg: `${nameInput.value} joined the chat`,
     })
@@ -47,6 +55,30 @@ sendButton.addEventListener('click',(e)=>{
     sendMessage()
 })
 
+function initEmojiPicker(){
+    const emojiPicker= document.getElementById('emojiPicker');
+    const emojiBtn= document.getElementById('emoji-btn');
+  
+    emojiPicker.addEventListener('emoji-click',(event)=>{
+        console.log('Emoji clicked:', event.detail.unicode);
+        const emoji = event.detail.unicode;
+        messageInput.value += emoji;
+        
+    });
+
+    emojiBtn.addEventListener('click',()=>{
+        console.log('Button clicked');
+        if(emojiPicker.style.display=="none"){
+            emojiPicker.style.display = "block";
+        }
+        else{
+            emojiPicker.style.display="none";
+        }
+    })
+}
+
+initEmojiPicker();
+
 /*linking enter key to send button*/
 messageInput.addEventListener("keyup",function(event){
     if(event.keyCode==13){
@@ -60,6 +92,11 @@ socket.on('clients-total',(data)=>{
 })
 
 function sendMessage(){
+
+    if(emojiPicker.style.display=="block"){
+        emojiPicker.style.display = "none";
+    }
+
     if(messageInput.value === '') return;
     console.log(messageInput.value)
     const data={
@@ -82,12 +119,15 @@ function addMessage(isOwnmsg,data){
     clearUpdateMessages();
     
     const messageElement = document.createElement('div');
+    const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+    const timestamp = new Date().toLocaleTimeString('en-US', options);
     if(isOwnmsg==true){
         messageElement.classList.add('message','my-msg');
             messageElement.innerHTML = `
             <div>
                 <div class="name">You</div>
                 <div class="text">${data.message.trim()}</div>
+                <div class="timestamp-my">${timestamp}</div>
             </div>
             `;
     }
@@ -97,6 +137,7 @@ function addMessage(isOwnmsg,data){
             <div>
                 <div class="name">${data.name}</div>
                 <div class="text">${data.message.trim()}</div>
+                <div class="timestamp-other">${timestamp}</div>
             </div>
             `;
 
