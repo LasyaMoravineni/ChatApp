@@ -138,6 +138,15 @@ body{
     word-wrap: break-word;
 }
 
+.timestamp-my, .timestamp-other{
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+.timestamp-my{
+    text-align: end;
+}
+
 #status{
     text-align: center;
     font-style: italic;
@@ -156,12 +165,35 @@ body{
 #msg-input{
     border-radius: 0px 0px 0px 10px ;
     border:  rgb(119, 117, 117) 1px solid;
+    border-right: none;
     outline: none;
     padding: 5px 10px;
     flex:1;
     height: 40px;
     font-size: 13px;
 }
+
+#emoji-btn {
+    padding: 3px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    border: rgb(119, 117, 117) 1px solid;
+    border-left: none;
+  
+}
+
+#emoji-btn :hover{
+    background-color: rgb(169, 167, 167);
+}
+
+emoji-picker {
+    position: absolute;
+    bottom: 0px;
+    right: 150px;
+    
+}
+
 #send-msg-btn{
     width: 70px;
     background: rgb(130, 130, 245);
