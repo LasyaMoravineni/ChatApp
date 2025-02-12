@@ -35,14 +35,14 @@ Follow the steps below to run the ChitChat application on your local machine:
    > http://localhost:4000
 You should now be able to use the ChitChat application for real-time messaging!
 
-🌟 Usage
+🌟**Usage**
 Joining the Chat: Enter your username and click the "Join" button to enter the chatroom.
 Sending Messages: Type messages and press "Send" or hit the "Enter" key to send.
 Participant Count: The app displays the total number of participants in real-time.
 Exit Notifications: Users leaving the chat are indicated by a message in the chat window.
 
 
-📈 Future Enhancements
+📈 **Future Enhancements**
 User Authentication: Implement secure login to allow for personalized user experiences.
 Database Integration: Yet to add a database for storing and retrieving chat history.
 Files/Multimedia Sharing: Add functionality for sharing images, documents, and videos.
